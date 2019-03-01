@@ -4,40 +4,40 @@
   <div class="four wide column"></div>
   <div class="four wide column"></div>
   <div class="four wide column"></div>
-
-
   <% @boards.each do |b| %>
   <div class="ui cards">
     <div class="card black thick">
       <div class="content">
         <div class="header">
-          <h2><%= link_to b.name, board_path(b) %></div>
-  
-    <div class="description">
-      <button class="ui mini inverted violet icon button">
-        <%= link_to "Edit", edit_board_path(b) %>
-          <i class="pencil icon"></i>
-      </button>
-    </div>
-  <button class="ui mini inverted violet icon button">
-    <%= link_to "Delete", board_path(b), method: :delete %>
-    <i class="trash icon"></i>
-  </button>
-  <br />
-  <% b.lists.each do |l| %>
-    <li>
-    <%= link_to l.name, list_tasks_path(l) %>
-    </li>
-    <br />
-    <% end %>
-    </div>
+          <h2><%= link_to b.name, board_path(b) %>
+        </div>
+        <div class="description">
+          
+        </div>
+        <br />
+          <% b.lists.each do |l| %>
+            <li>
+              <%= link_to l.name, list_tasks_path(l) %>
+            </li>
+            <br />
+          <% end %>
+          <button class="ui mini inverted violet icon button">
+            <%= link_to "Add", new_board_list_path(b) %>
+            <i class="pencil icon"></i>
+          </button>
+        
+          <button class="ui mini inverted violet icon button">
+            <%= link_to "Edit", board_lists_path(b) %>
+            <i class="trash icon"></i>
+          </button>
+      </div>
     </div>
   </div>
 
   </h2>
   
   
-<% end %>
+    <% end %>
 </div>
 
 
