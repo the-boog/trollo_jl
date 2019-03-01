@@ -1,0 +1,18 @@
+<%= render "/layouts/navbar" %>
+
+<% @boards.each do |b| %>
+  <div class="ui grid">
+  <div class="two wide column"><%= link_to b.name, board_lists_path(b) %>
+  <h5><button class="ui inverted mini pink icon button">
+    <%= link_to "Edit", edit_board_path(b) %>
+    <i class="pencil icon"></i>
+  </button>
+  <button class="ui inverted mini pink icon button">
+    <%= link_to "Delete", board_path(b), method: :delete %>
+    <i class="trash icon"></i>
+  </button></div>
+  
+  </div>
+  </h5>
+<% end %>
+

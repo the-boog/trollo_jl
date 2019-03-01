@@ -1,0 +1,12 @@
+<%= render "/layouts/navbar" %>
+
+<h1>Tasks</h1>
+
+<h1><%= link_to "Create task", new_list_task_path %></h1>
+<% @list.tasks.each do |t| %>
+  
+  <h5><%= t.priority  %> <%= link_to t.name, edit_list_task_path(@list, t) %> 
+  <%= link_to "Delete", list_task_path(@list, t), method: :delete %></h5>
+  <h6> <%= t.description %> </h6>
+  
+<% end %>

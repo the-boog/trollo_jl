@@ -1,0 +1,11 @@
+<%= render "/layouts/navbar" %>
+
+<h1>Lists</h1>
+
+<h1><%= link_to "Create List", new_board_list_path %></h1>
+<% @board.lists.each do |l| %>
+  <h3><%= l.priority  %> <%= link_to l.name, list_tasks_path(l) %></h3>
+
+  <h5><%= link_to "Change List Name", edit_board_list_path(@board, l) %>
+  <h5><%= link_to "Delete", board_list_path(@board, l), method: :delete %>
+<% end %>

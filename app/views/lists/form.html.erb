@@ -1,0 +1,14 @@
+<%= render "/layouts/navbar" %>
+<%= form_with(model: [@board, @list], local: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :priority %>
+  <%= f.select(:priority, [1, 2, 3, 4, 5]) %>
+ 
+  <%= f.submit %>
+  
+  
+    <% end %>
+  
+    
