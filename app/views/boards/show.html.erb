@@ -1,3 +1,7 @@
 <%= render "/layouts/navbar" %>
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
+<h1><%= @board.name %></h1>
+
+
+
+<%= link_to "Delete", board_path(@board), method: :delete %>
+<%= link_to "Edit", edit_board_path(@board) %>

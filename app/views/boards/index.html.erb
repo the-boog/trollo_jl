@@ -1,18 +1,43 @@
 <%= render "/layouts/navbar" %>
+<div class="ui grid container white">
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
 
-<% @boards.each do |b| %>
-  <div class="ui grid">
-  <div class="two wide column"><%= link_to b.name, board_lists_path(b) %>
-  <h5><button class="ui inverted mini pink icon button">
-    <%= link_to "Edit", edit_board_path(b) %>
-    <i class="pencil icon"></i>
-  </button>
-  <button class="ui inverted mini pink icon button">
+
+  <% @boards.each do |b| %>
+  <div class="ui cards">
+    <div class="card black thick">
+      <div class="content">
+        <div class="header">
+          <h2><%= link_to b.name, board_path(b) %></div>
+  
+    <div class="description">
+      <button class="ui mini inverted violet icon button">
+        <%= link_to "Edit", edit_board_path(b) %>
+          <i class="pencil icon"></i>
+      </button>
+    </div>
+  <button class="ui mini inverted violet icon button">
     <%= link_to "Delete", board_path(b), method: :delete %>
     <i class="trash icon"></i>
-  </button></div>
-  
+  </button>
+  <br />
+  <% b.lists.each do |l| %>
+    <li>
+    <%= link_to l.name, list_tasks_path(l) %>
+    </li>
+    <br />
+    <% end %>
+    </div>
+    </div>
   </div>
-  </h5>
+
+  </h2>
+  
+  
 <% end %>
+</div>
+
 
