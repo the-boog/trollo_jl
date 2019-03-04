@@ -1,9 +1,13 @@
 <%= render "/layouts/navbar" %>
+<br />
+<button class="ui huge top right floated inverted violet button"><%= link_to 'Alphabetical Order', boards_alphabetize_path, method: :post %></button>
+<button class="ui huge top right floated inverted violet button"><%= link_to 'Date Created', boards_date_path, method: :post %></button>
 <div class="ui grid container white">
   <div class="four wide column"></div>
   <div class="four wide column"></div>
   <div class="four wide column"></div>
   <div class="four wide column"></div>
+  
   <% @boards.each do |b| %>
   <div class="ui cards">
     <div class="card black thick">
@@ -21,12 +25,12 @@
             </li>
             <br />
           <% end %>
-          <button class="ui mini inverted violet icon button">
+          <button class="ui mini inverted pink icon button">
             <%= link_to "Add", new_board_list_path(b) %>
             <i class="pencil icon"></i>
           </button>
         
-          <button class="ui mini inverted violet icon button">
+          <button class="ui mini inverted pink icon button">
             <%= link_to "Edit", board_lists_path(b) %>
             <i class="trash icon"></i>
           </button>

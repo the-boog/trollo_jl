@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_list
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :alphabetize, :date, :priority]
   
   def index
     @tasks = Task.all_tasks(@list.id)
@@ -40,6 +40,24 @@ class TasksController < ApplicationController
     redirect_to list_tasks_path
   end
 
+  def alphabetize
+    @tasks = Task.all_tasks(@list.id)
+    @tasks.sort_by! {|t| t.name}
+    render "index"
+  end
+
+  def date
+    @tasks = Task.all_tasks(@list.id)
+    @tasks.sort_by! {|t| t.created_at}
+    render "index"
+  end
+
+  def priority
+    @tasks = Task.all_tasks(@list.id)
+    @tasks.sort_by! {|t| t.priority}
+    render "index"
+  end
+  
   private
   def task_params
     params.require(:task).permit(:name, :priority, :description, :list_id)

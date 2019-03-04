@@ -1,17 +1,22 @@
 <%= render "/layouts/navbar" %>
+<footer>
+
 <%= form_with(model: [@list, @task], local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+ <div class="field">
+  <% f.label :name, %>
+  <%= f.text_field :name, required: true, placeholder: "Name" %>
+</div>
+<div class="field">
+  <% f.label :description %>
+  <%= f.text_area :description, placeholder: "Descriptioin" %>
+</div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.label :priority %>
+  <% f.label :priority %>
   <%= f.select(:priority, [1, 2, 3, 4, 5]) %>
   
   <%= f.submit %>
   
   
     <% end %>
-  
+</footer>
   

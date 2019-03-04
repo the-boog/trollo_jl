@@ -1,12 +1,40 @@
 <%= render "/layouts/navbar" %>
 
-<h1>Tasks</h1>
+<h1><button class="ui huge top right floated inverted violet button"><%= link_to 'Alphabetical Order', list_tasks_alphabetize_path, method: :post %></button>
+<button class="ui huge top right floated inverted violet button"><%= link_to 'Date Created', list_tasks_date_path, method: :post %></button>
+<button class="ui huge top right floated inverted violet button"><%= link_to 'Priority', list_tasks_priority_path, method: :post %></button>
+<button class="ui huge top left floated inverted violet button"><%= link_to "New Task", new_list_task_path %></button></h1>
 
-<h1><%= link_to "Create task", new_list_task_path %></h1>
-<% @list.tasks.each do |t| %>
+<br />
+
+<div class="ui grid container white">
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <% @list.tasks.each do |t| %>
+  <div class="ui cards">
+    <div class="card black thick">
+      <div class="content">
+        <div class="header">
+          <%= t.priority  %> <%= link_to t.name, edit_list_task_path(@list, t) %> 
+          </button>
+          <button class="ui mini right floated inverted pink icon button">
+        <%= link_to "Delete", list_task_path(@list, t), method: :delete %>
+        <i class="trash icon"></i>
+        </button>
+        </div>
+        
+
+        <div class="description">
+          <h4> <%= t.description %> </h4>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
   
-  <h5><%= t.priority  %> <%= link_to t.name, edit_list_task_path(@list, t) %> 
-  <%= link_to "Delete", list_task_path(@list, t), method: :delete %></h5>
-  <h6> <%= t.description %> </h6>
-  
-<% end %>

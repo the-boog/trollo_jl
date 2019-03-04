@@ -10,13 +10,14 @@ class Board < ApplicationRecord
     )
   end
 
-    def self.find_board(board_id, user_id)
-      Board.find_by_sql(["
-        SELECT * 
-        FROM boards AS b
-        WHERE b.id = ? AND b.user_id = ?
+  def self.find_board(board_id, user_id)
+    Board.find_by_sql(["
+      SELECT * 
+      FROM boards AS b
+      WHERE b.id = ? AND b.user_id = ?
       ", board_id, user_id]).first
-    end
+  end
+  
 end
 
 

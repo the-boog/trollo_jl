@@ -40,6 +40,20 @@ class BoardsController < ApplicationController
     redirect_to boards_path
   end
 
+  def alphabetize
+    @boards = Board.all_boards(current_user.id)
+    @boards.sort_by! {|b| b.name}
+    render "index"
+    
+  end
+
+  def date
+    @boards = Board.all_boards(current_user.id)
+    @boards.sort_by! {|b| b.created_at}
+    render "index"
+    
+  end
+
   private
   def board_params
     params.require(:board).permit(:name)
@@ -51,4 +65,6 @@ class BoardsController < ApplicationController
 
 
 end
+
+
 

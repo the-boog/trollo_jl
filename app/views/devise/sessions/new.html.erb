@@ -1,19 +1,26 @@
 
+<header>
 <h2 class="ui blue header">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="ui input">
-    <%= f.label :email %><br />
+    
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email %>
+   
   </div>
-
+  <br />
+  <br />
   <div class="ui input">
-    <%= f.label :password %><br />
+    
     <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password %><br />
   </div>
+  <br />
+  <br />
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="ui field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
@@ -25,3 +32,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</header>
